@@ -1,9 +1,20 @@
 .row {
   @mixin clearfix;
-  margin-right: -65px;
+
+  &--gutter {
+    margin-right: -65px;
+  }
 
   &--gutter > div {
     padding-right: 65px;
+  }
+
+  &--gutter-large {
+    margin-right: -100px;
+  }
+
+  &--gutter-large > div {
+    padding-right: 100px;
   }
 
   &__b-margin-until-medium {
@@ -22,6 +33,11 @@
       &--larger {
         width: 37%;
       }
+    }
+
+    &__medium-6 {
+      float: left;
+      width: 50%;
     }
 
     &__medium-8 {

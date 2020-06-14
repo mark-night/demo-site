@@ -1,0 +1,124 @@
+.site-header {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  padding: 10px 0;
+  transition: background-color 0.3s ease-out;
+
+  &--expanded {
+    background-color: rgba($mainBlue, 0.55);
+  }
+
+  @mixin atMedium {
+    background-color: rgba($mainBlue, 0.3);
+  }
+
+  &__btn-container {
+    @mixin atMedium {
+      float: right;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    background-color: $mainBlue;
+    padding: 13px 29px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @mixin atMedium {
+      left: auto;
+      transform: translateX(0);
+      padding: 25px 36px;
+    }
+  }
+
+  &__menu-icon {
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* prevent it from being covered by menu-content */
+    z-index: 10;
+
+    &::before {
+      content: "";
+      background-color: #fff;
+      width: 20px;
+      height: 3px;
+      position: absolute;
+      top: 0;
+      transform-origin: 0 3px;
+      transition: transform 0.3s ease-out;
+    }
+
+    &__middle {
+      background-color: #fff;
+      width: 20px;
+      height: 3px;
+      position: absolute;
+      /* top: 50%; */
+      top: 8px;
+      /* transform: translateY(-50%) scaleX(1); */
+      transform-origin: 0 50%;
+      transition: all 0.3s ease-out;
+    }
+
+    &::after {
+      content: "";
+      background-color: #fff;
+      width: 20px;
+      height: 3px;
+      position: absolute;
+      bottom: 0;
+      transform-origin: 0 0;
+      transition: transform 0.3s ease-out;
+    }
+
+    @mixin atMedium {
+      display: none;
+    }
+  }
+
+  &__menu-icon--x {
+    &::before {
+      transform: rotate(45deg) scaleX(1.08);
+    }
+
+    .site-header__menu-icon__middle {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &::after {
+      transform: rotate(-45deg) scaleX(1.08);
+    }
+  }
+
+  &__menu-content {
+    opacity: 0;
+    transform: scale(1.2);
+    /* necessary for z-index to be recoganized */
+    position: relative;
+    /* invisible but functional, negative z-index prevent it from being clicked  */
+    z-index: -10;
+    transition: all 0.3s ease-out;
+    padding-top: 90px;
+    text-align: center;
+
+    @mixin atMedium {
+      padding-top: 0;
+      opacity: 1;
+      z-index: 1;
+      transform: scale(1);
+    }
+
+    &--visible {
+      opacity: 1;
+      z-index: 1;
+      transform: scale(1);
+    }
+  }
+}

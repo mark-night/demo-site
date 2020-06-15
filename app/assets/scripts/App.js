@@ -18,7 +18,7 @@ document.querySelectorAll(".open-modal").forEach((el) => {
     // scritp splitting thanks to webpack (load file on the fly only when needed)
     if (typeof modal == "undefined") {
       // not imported yet
-      import("./modules/Modal")
+      import(/* webpackChunkName: "modal" */ "./modules/Modal")
         .then((m) => {
           modal = new m.default();
           // make sure things got enough time to be prepared

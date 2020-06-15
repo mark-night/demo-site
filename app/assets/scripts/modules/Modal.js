@@ -2,20 +2,11 @@ class Modal {
   constructor() {
     this.injectHTML();
     this.modal = document.querySelector(".modal");
-    this.btnsToOpenModal = document.querySelectorAll(".open-modal");
     this.btnToCloseModal = document.querySelector(".modal__close");
     this.events();
   }
 
   events() {
-    // buttons click to open modal
-    this.btnsToOpenModal.forEach((el) =>
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.modal.classList.add("modal--visible");
-      })
-    );
-
     // button click to close modal
     this.btnToCloseModal.addEventListener("click", () => this.closeModal());
 
@@ -25,6 +16,10 @@ class Modal {
         this.closeModal();
       }
     });
+  }
+
+  openModal() {
+    this.modal.classList.add("modal--visible");
   }
 
   closeModal() {

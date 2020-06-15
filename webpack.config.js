@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const fs_extra = require("fs-extra");
 
 // "docs" is necessary to ultilize gitHub's free service
-const output_path = "docs";
+const output_path = "DIST";
 
 class RunAfterCompile {
   apply(compiler) {

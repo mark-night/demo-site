@@ -20,11 +20,12 @@ class ClientArea {
           this.form.remove();
           this.contentArea.innerHTML = response.data;
         })
-        .catch(() => {
+        .catch((err) => {
           this.contentArea.innerHTML = `
             <p class="client-area__error">
             Wrong pass phrase, please try again!
             </p>
+            <h1>${err.data}</h1>
             `;
           this.field.value = "";
           this.field.focus();

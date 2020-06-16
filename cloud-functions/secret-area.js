@@ -22,7 +22,8 @@ exports.handler = function (event, context, callback) {
   } else {
     callback(null, {
       // forbiden
-      statusCode: 401
+      statusCode: 401,
+      body: body.password
     });
   }
 };

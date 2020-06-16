@@ -5,6 +5,18 @@ import RevealOnScroll from "./modules/RevealOnScroll";
 import StickyHeader from "./modules/StickyHeader";
 import ClientArea from "./modules/ClientArea";
 
+import React from "react";
+import ReactDOM from "react-dom";
+function ExampleComponent() {
+  return (
+    <div>
+      <h1>React Example Component</h1>
+      <p> React is great, worth to take a look.</p>
+    </div>
+  );
+}
+ReactDOM.render(<ExampleComponent />, document.querySelector("#react-example"));
+
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 0.8);
 new RevealOnScroll(document.querySelectorAll(".testimonial"), 0.7);
 

@@ -40,6 +40,17 @@ let cssRule = {
   ]
 };
 
+let jsRule = {
+  test: /\.js$/,
+  exclude: /(node_modules)/,
+  use: {
+    loader: "babel-loader",
+    options: {
+      presets: ["@babel/preset-react", "@babel/preset-env"]
+    }
+  }
+};
+
 let process_HtmlWebpackPlugin = fs_extra
   // get a list of files in the path
   .readdirSync("./app")
@@ -59,7 +70,7 @@ let config = {
   entry: "./app/assets/scripts/App.js",
   plugins: process_HtmlWebpackPlugin,
   module: {
-    rules: [cssRule]
+    rules: [cssRule, jsRule]
   }
 };
 
@@ -85,17 +96,6 @@ if (task == "dev") {
 } else if (task == "build") {
   cssRule.use.unshift(MiniCssExtractPlugin.loader);
   postCSSPlugins.push(require("cssnano"));
-
-  config.module.rules.push({
-    test: /\.js$/,
-    exclude: /(node_modules)/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: ["@babel/preset-env"]
-      }
-    }
-  });
 
   config.output = {
     filename: "[name].[chunkhash].js",

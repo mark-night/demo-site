@@ -3,8 +3,8 @@ import Axios from "axios";
 class ClientArea {
   constructor() {
     this.injectHTML();
-    this.form = document.querySelector(".client-area");
-    this.field = document.querySelector(".client-area__form");
+    this.form = document.querySelector(".client-area__form");
+    this.field = document.querySelector(".client-area__input");
     this.contentArea = document.querySelector(".client-area__content-area");
     this.events();
   }
@@ -20,12 +20,11 @@ class ClientArea {
           this.form.remove();
           this.contentArea.innerHTML = response.data;
         })
-        .catch((err) => {
+        .catch(() => {
           this.contentArea.innerHTML = `
             <p class="client-area__error">
             Wrong pass phrase, please try again!
             </p>
-            <h1>${err.data}</h1>
             `;
           this.field.value = "";
           this.field.focus();

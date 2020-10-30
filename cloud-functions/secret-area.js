@@ -13,16 +13,16 @@ exports.handler = function (event, context, callback) {
     body = {};
   }
   // assuming predefined key is "password", and expecting value of "theCorrectPassword"
-  if (body.password == "theCorrectPassword") {
+  if (body.password == 'theCorrectPassword') {
     callback(null, {
       // the response
       statusCode: 200,
-      body: responseHTML
+      body: responseHTML,
     });
   } else {
     callback(null, {
-      // forbiden
-      statusCode: 401
+      // forbidden
+      statusCode: 401,
     });
   }
 };

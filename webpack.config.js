@@ -1,12 +1,13 @@
 const task = process.env.npm_lifecycle_event;
 
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs_extra = require('fs-extra');
 
 // "docs" is necessary to ultilize gitHub's free service
-const output_path = '..';
+const output_path = '../../static_sites/meet';
 
 class RunAfterCompile {
   apply(compiler) {
@@ -111,6 +112,7 @@ if (task == 'dev') {
   };
 
   config.plugins.push(
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'styles.[chunkhash].css',
     }),
